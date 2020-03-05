@@ -10,7 +10,29 @@ namespace NorthWind.Controllers
     public class ProductController : Controller
     {
 
+        public ActionResult GetProductByName(string name)
+        {
+            ActionResult Result;
 
+            var Context = new NORTHWNDEntities();
+            var Product =
+               Context.Products.Where(p => p.ProductName == name).FirstOrDefault();
+
+
+            if (Product!= null)
+            {
+                Result = View("Details",Product);
+            }
+            else
+            {
+                Result = HttpNotFound(string.Format("Producto '{0} no encontrado' ",name));
+            }
+           
+
+            return Result;
+        }
+
+        [ChildActionOnly]
         public ActionResult Total()
         {
             var Context = new NORTHWNDEntities();
