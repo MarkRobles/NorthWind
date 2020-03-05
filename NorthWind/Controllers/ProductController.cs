@@ -52,6 +52,12 @@ namespace NorthWind.Controllers
         }
         public ActionResult Create()
         {
+            ViewData["Message2"] = "Mensaje 2";
+            ViewData["Message3"] = "Message 3";
+
+            ViewBag.Message = "Proporcione los datos del producto:";
+            ViewBag.ServerTime = DateTime.Now;
+
             Product NewProduct = new Product();
 
             var Context = new NORTHWNDEntities();
