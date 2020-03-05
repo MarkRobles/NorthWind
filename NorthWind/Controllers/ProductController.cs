@@ -10,6 +10,16 @@ namespace NorthWind.Controllers
     public class ProductController : Controller
     {
 
+
+        public ActionResult Total()
+        {
+            var Context = new NORTHWNDEntities();
+
+            var Result = string.Format("<strong>{0} productos</strong>", Context.Products.Count());
+
+            return Content(Result);
+        }
+
         public ActionResult HacerAlgoSinRespuesta()
         {
             return new EmptyResult();
